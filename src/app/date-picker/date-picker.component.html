@@ -1,0 +1,37 @@
+<mat-card-content>
+  <p>Set starting and ending dates for the report:</p>
+  <p></p>
+  <p></p>
+  <mat-divider></mat-divider>
+  <p></p>
+  <form [formGroup]="dateForm" novalidate>
+
+  <mat-form-field>
+    <mat-label>Starting date</mat-label>
+    <input matInput [matDatepicker]="begin" formControlName="beginDate" [max]="today">
+    <mat-datepicker-toggle matSuffix [for]="begin" ></mat-datepicker-toggle>
+    <mat-datepicker #begin></mat-datepicker>
+
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Ending date</mat-label>
+    <input matInput [matDatepicker]="end" formControlName="endDate" [max]="today">
+    <mat-datepicker-toggle matSuffix [for]="end" ></mat-datepicker-toggle>
+    <mat-datepicker #end></mat-datepicker>
+
+  </mat-form-field>
+  </form>
+  <p></p>
+  <p></p>
+  <div class="dialog-visit-cancel-button-row">
+    <button class="dialog-button" mat-button
+            (click)="cancel()">
+      Cancel
+    </button>
+
+    <button class="dialog-button" mat-button mat-raised-button color="accent"
+            (click)="approve()" [disabled]="!dateForm.valid">
+      Continue
+    </button>
+  </div>
+</mat-card-content>

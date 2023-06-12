@@ -1,0 +1,57 @@
+<mat-card-title>
+  Preferred Customer Report
+</mat-card-title>
+<mat-divider></mat-divider>
+<p></p>
+<div class="oneLineContainer">
+
+  <p>Artist: {{artwork.artistName}} {{artwork.artistSurname}}</p>
+  <p>Title: {{artwork.title}}</p>
+</div>
+<div class="oneLineContainer">
+
+  <p>Art Type: {{artwork.artType}}</p>
+  <p>Art Medium: {{artwork.artMedium}}</p>
+  <p>Art Style: {{artwork.artStyle}}</p>
+</div>
+<p></p>
+<table mat-table [dataSource]="customers">
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No.</th>
+    <td mat-cell *matCellDef="let customer; let i = index"> {{i + 1}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name</th>
+    <td mat-cell *matCellDef="let customer"> {{customer.getName()}} </td>
+  </ng-container>
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef> Address</th>
+    <td mat-cell *matCellDef="let customer"> {{customer.address}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="prefType">
+    <th mat-header-cell *matHeaderCellDef> Prefered type</th>
+    <td mat-cell *matCellDef="let customer"> {{customer.prefType}} </td>
+  </ng-container>
+  <ng-container matColumnDef="prefMedium">
+    <th mat-header-cell *matHeaderCellDef> Prefered medium</th>
+    <td mat-cell *matCellDef="let customer"> {{customer.prefMedium}} </td>
+  </ng-container>
+  <ng-container matColumnDef="prefStyle">
+    <th mat-header-cell *matHeaderCellDef> Prefered style</th>
+    <td mat-cell *matCellDef="let customer"> {{customer.prefStyle}} </td>
+  </ng-container>
+  <ng-container matColumnDef="prefArtist">
+    <th mat-header-cell *matHeaderCellDef> Prefered artist</th>
+    <td mat-cell *matCellDef="let customer"> {{customer.prefArtistName + " " + customer.prefArtistSurname}} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+

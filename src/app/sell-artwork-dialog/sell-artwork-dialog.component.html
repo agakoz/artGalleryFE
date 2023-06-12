@@ -1,0 +1,62 @@
+<mat-card-title xmlns="http://www.w3.org/1999/html">
+  Sell Artwork
+</mat-card-title>
+<mat-divider></mat-divider>
+<mat-card-content>
+  <div class="visit-form">
+    <br>
+    <br>
+    <form [formGroup]="sellArtworkForm" novalidate>
+
+      <mat-form-field class="form-input">
+        <mat-label>Customer</mat-label>
+        <mat-select matInput
+                    name="customerId"
+                    formControlName="customerId">
+          <mat-option *ngFor="let customer of customers"
+                      [value]="customer.id">{{customer.basicInfo()}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="form-input">
+        <mat-label>Salesperson</mat-label>
+        <mat-select matInput
+                    name="salespersonId"
+                    formControlName="salespersonId">
+          <mat-option *ngFor="let salesperson of salespersons"
+                      [value]="salesperson.id">{{salesperson.basicInfo()}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+<br>
+
+      <mat-form-field>
+        <mat-label>Date of sale</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" [max]="today">
+        <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+      </mat-form-field>
+      <br>
+            <mat-form-field>
+              <mat-label>Selling price</mat-label>
+              <input matInput
+                     type="number"
+                     name="sellingPrice"
+                     formControlName="sellingPrice"
+              >
+            </mat-form-field>
+
+    </form>
+    <mat-divider></mat-divider>
+    <br>
+    <br>
+    <div class="dialog-visit-plan-button-row">
+      <button class="dialog-button" mat-button (click)="closeDialog()">Cancel</button>
+
+      <button class="dialog-button" mat-button mat-raised-button color="accent"
+              (click)="onSubmit()" [disabled]="!sellArtworkForm.valid">
+        Save
+      </button>
+    </div>
+  </div>
+</mat-card-content>

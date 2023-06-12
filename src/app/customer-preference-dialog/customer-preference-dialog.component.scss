@@ -1,0 +1,36 @@
+.page-title {
+  margin-left: 20px;
+  vertical-align: center;
+  line-height: 70px;
+  display: inline-block;
+  position: relative;
+
+}
+
+.title-button {
+  margin-right: 20px;
+}
+table {
+  width: 95%;
+  margin: auto;
+}
+.table-card {
+  width: 95%;
+  margin: auto;
+}
+td, th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+td.table-num{
+  text-align: right !important;
+}
+.edit-icon {
+  height: 80%;
+}
+.oneLineContainer {
+  width: 40%;
+  float: left;
+  display: inline-block;
+}

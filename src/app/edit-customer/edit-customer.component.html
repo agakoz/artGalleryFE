@@ -1,0 +1,86 @@
+<mat-card-title>
+  Update Customer Information
+</mat-card-title>
+<mat-divider></mat-divider>
+<mat-card-content>
+  <div class="visit-form">
+    <br>
+    <br>
+    <form [formGroup]="customerForm" novalidate>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput
+               name="name"
+               formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Surname</mat-label>
+        <input matInput
+               name="surname"
+               formControlName="surname">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput
+               name="address"
+               formControlName="address">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput
+               name="phone"
+               formControlName="phone">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Preferred type</mat-label>
+        <mat-select formControlName="prefType">
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Preferred medium</mat-label>
+        <mat-select formControlName="prefMedium">
+          <mat-option *ngFor="let medium of mediums" [value]="medium">
+            {{medium}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Preferred Style</mat-label>
+        <mat-select formControlName="prefStyle">
+          <mat-option *ngFor="let style of styles" [value]="style">
+            {{style}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-input">
+        <mat-label>Artist</mat-label>
+        <mat-select matInput
+                    name="prefArtist"
+                    formControlName="prefArtist">
+          <mat-option *ngFor="let artist of artists"
+                      [value]="artist.id">{{artist.basicInfo()}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+    <mat-divider></mat-divider>
+    <br>
+    <br>
+    <div class="dialog-visit-plan-button-row">
+      <button class="dialog-button" mat-button (click)="closeDialog()">Cancel</button>
+
+      <button class="dialog-button" mat-button mat-raised-button color="accent"
+              (click)="onSubmit()" [disabled]="!customerForm.valid">
+        Save
+      </button>
+    </div>
+  </div>
+</mat-card-content>

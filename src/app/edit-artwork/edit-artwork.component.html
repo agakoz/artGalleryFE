@@ -1,0 +1,116 @@
+<mat-card-title>
+  Edit Artwork Information
+</mat-card-title>
+<mat-divider></mat-divider>
+<mat-card-content>
+  <div class="visit-form">
+    <br>
+    <br>
+    <form [formGroup]="artworkForm" novalidate>
+      <mat-form-field class="form-input">
+        <mat-label>Artist</mat-label>
+        <input matInput
+                    name="artistId"
+                    formControlName="artistName"
+        >
+
+
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput
+               name="title"
+               formControlName="title">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Size</mat-label>
+        <input matInput
+               name="size"
+               formControlName="size">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Asking price</mat-label>
+        <input matInput
+               type="number"
+               name="askingPrice"
+               formControlName="askingPrice">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Art type</mat-label>
+        <mat-select formControlName="artType">
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Art medium</mat-label>
+        <mat-select formControlName="artMedium">
+          <mat-option *ngFor="let medium of mediums" [value]="medium">
+            {{medium}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Art Style</mat-label>
+        <mat-select formControlName="artStyle">
+          <mat-option *ngFor="let style of styles" [value]="style">
+            {{style}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!--      <mat-form-field>-->
+      <!--        <ngx-mat-file-input accept="image/x-png,image/gif,image/jpeg" #removableInput formControlName="photo" placeholder="Select photo"></ngx-mat-file-input>-->
+      <!--        <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">-->
+      <!--          <mat-icon>clear</mat-icon>-->
+      <!--        </button>-->
+      <!--      </mat-form-field>-->
+      <!---->
+      <mat-form-field class="attachment-input">
+        <mat-label
+        >{{fileName}}</mat-label>
+        <ng-template #newFile>
+          <mat-label>Select image</mat-label>
+        </ng-template>
+        <button mat-icon-button matSuffix (click)="fileInput.click()" *ngIf="!fileName"
+        >
+          <mat-icon>attach_file</mat-icon>
+        </button>
+        <button mat-menu-item matSuffix (click)="deleteFile()" *ngIf="fileName">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <input matInput disabled>
+
+        <input
+          hidden
+          (change)="selectFile($event)"
+          #fileInput
+          type="file"
+          id="file"
+          accept="image/x-png,image/gif,image/jpeg"
+          required
+          [required]>
+      </mat-form-field>
+      <!--      -->
+    </form>
+    <mat-divider></mat-divider>
+    <br>
+    <br>
+    <div class="dialog-visit-plan-button-row">
+      <button class="dialog-button" mat-button (click)="closeDialog()">Cancel</button>
+
+      <button class="dialog-button" mat-button mat-raised-button color="accent"
+              (click)="onSubmit()" [disabled]="!artworkForm.valid">
+        Save
+      </button>
+    </div>
+  </div>
+</mat-card-content>
+
+

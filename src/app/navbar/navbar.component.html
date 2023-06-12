@@ -1,0 +1,28 @@
+<mat-toolbar id="navbar" class="mat-elevation-z5 toolbar">
+
+  <img src="assets/logo/logo.png"  alt="ARG_GALLERY" routerLink="/"
+       style="height: 50px" >
+  <div class="spacer"></div>
+  <div class="button-row " >
+    <button mat-button routerLink="/artists" class="navbarButton">Artists</button>
+    <button mat-button routerLink="/salespersons" class="navbarButton">Salespersons</button>
+    <button mat-button routerLink="/customers" class="navbarButton">Customers</button>
+<!--    <button mat-button routerLink="/collectors" class="navbarButton">Collectors</button>-->
+    <button mat-button [matMenuTriggerFor]="menu">Sales</button>
+    <mat-menu #profile="matMenu" #menu="matMenu">
+      <button mat-menu-item routerLink="/worksOnSale">
+        <mat-icon >
+          sell
+        </mat-icon>
+        Works for sale
+      </button>
+      <button mat-menu-item routerLink="/pastSales">
+        <mat-icon>
+          history
+        </mat-icon>
+        Past sales
+      </button>
+    </mat-menu>
+
+  </div>
+</mat-toolbar>

@@ -1,0 +1,107 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+
+  <header class="page-title-container  mat-elevation-z3 ">
+    <h1 class="page-title">Artists List</h1>
+    <div class="patients-buttons button-row">
+      <button id="artistReport" class=" title-button  mat-elevation-z5"
+              mat-stroked-button
+              color="accent"
+              (click)="openActiveArtistDialog()">
+        <mat-icon>article</mat-icon> Generate Active Artists Report
+      </button>
+      <button id="addArtistButton" routerLink="../add-artist" class=" title-button  mat-elevation-z5"
+              mat-stroked-button
+              color="accent"
+              (click)="openAddArtistDialog()"
+              >
+        <mat-icon>add</mat-icon> Add artist
+      </button>
+
+
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="patient-list">
+<!--      <div class="search-box">-->
+<!--        <mat-icon class=" search-icon">search</mat-icon>-->
+<!--        <mat-form-field>-->
+<!--          <mat-label>Szukaj</mat-label>-->
+<!--          <input id="searchInput" matInput placeholder="np. imię, nazwisko, pesel" [(ngModel)]="searchText">-->
+<!--          <i id="search-clear" class="material-icons" (click)="searchText=''">clear</i>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+
+    </div>
+
+    <table mat-table [dataSource]="artistsList">
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let artist; let i = index"> {{i + 1}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let artist"> {{artist.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="surname">
+        <th mat-header-cell *matHeaderCellDef> Surname </th>
+        <td mat-cell *matCellDef="let artist"> {{artist.surname}} </td>
+      </ng-container>
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let artist"> {{artist.address}} </td>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Phone </th>
+        <td mat-cell *matCellDef="let artist"> {{artist.phone}} </td>
+      </ng-container>
+      <ng-container matColumnDef="ssn">
+        <th mat-header-cell *matHeaderCellDef> SSN </th>
+        <td mat-cell *matCellDef="let artist"> {{artist.ssn}} </td>
+      </ng-container>
+      <ng-container matColumnDef="usualType">
+        <th mat-header-cell *matHeaderCellDef> Usual type </th>
+        <td mat-cell *matCellDef="let artist"> {{artist.usualType}} </td>
+      </ng-container>
+      <ng-container matColumnDef="usualMedium">
+        <th mat-header-cell *matHeaderCellDef> Usual medium </th>
+        <td mat-cell *matCellDef="let artist"> {{artist.usualMedium}} </td>
+      </ng-container>
+      <ng-container matColumnDef="usualStyle">
+        <th mat-header-cell *matHeaderCellDef> Usual style </th>
+        <td mat-cell *matCellDef="let artist"> {{artist.usualStyle}} </td>
+      </ng-container>
+      <ng-container matColumnDef="thisYearSelling">
+        <th mat-header-cell *matHeaderCellDef> This year selling </th>
+        <td mat-cell *matCellDef="let artist" class="table-num"> {{artist.thisYearAmt}} </td>
+      </ng-container>
+      <ng-container matColumnDef="lastYearSelling">
+        <th mat-header-cell *matHeaderCellDef> Last year selling </th>
+        <td mat-cell *matCellDef="let artist" class="table-num"> {{artist.lastYearAmt}} </td>
+      </ng-container>
+      <ng-container matColumnDef="more">
+        <th mat-header-cell *matHeaderCellDef> More </th>
+        <td mat-cell *matCellDef="let artist">
+          <a mat-button [matMenuTriggerFor]="moreMenu"><mat-icon>more_vert</mat-icon></a>
+          <mat-menu #moreMenu="matMenu">
+            <button mat-menu-item (click)="showArtworks(artist)"><mat-icon>article</mat-icon>Artist report</button>
+            <button mat-menu-item (click)="addArtwork(artist)"><mat-icon>add</mat-icon>Add new artwork</button>
+            <button mat-menu-item (click)="editArtist(artist)"><mat-icon>edit</mat-icon>Update information</button>
+            <!--        <button mat-menu-item>Update</button>-->
+            <button mat-menu-item (click)="delete(artist.id)"><mat-icon>remove_circle_outline</mat-icon>Remove</button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </div>
+
+
+</div>

@@ -1,0 +1,84 @@
+<mat-card-title>
+  New Artist
+</mat-card-title>
+<mat-divider></mat-divider>
+<mat-card-content>
+  <div class="visit-form">
+    <br>
+    <br>
+    <form [formGroup]="newArtistForm" novalidate>
+      <mat-form-field >
+        <mat-label>Name</mat-label>
+        <input matInput
+               name="name"
+               formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field >
+        <mat-label>Surname</mat-label>
+        <input matInput
+               name="surname"
+               formControlName="surname">
+      </mat-form-field>
+      <br>
+      <mat-form-field >
+        <mat-label>Address</mat-label>
+        <input matInput
+               name="address"
+               formControlName="address">
+      </mat-form-field>
+      <mat-form-field >
+        <mat-label>Phone</mat-label>
+        <input matInput
+               name="phone"
+               formControlName="phone">
+      </mat-form-field>
+      <br>
+      <mat-form-field >
+        <mat-label>SSN</mat-label>
+        <input matInput
+               name="ssn"
+               formControlName="ssn">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Usual type</mat-label>
+        <mat-select formControlName="usualType">
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Usual medium</mat-label>
+        <mat-select formControlName="usualMedium">
+          <mat-option *ngFor="let medium of mediums" [value]="medium">
+            {{medium}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Usual Style</mat-label>
+        <mat-select formControlName="usualStyle">
+          <mat-option *ngFor="let style of styles" [value]="style">
+            {{style}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+    <mat-divider></mat-divider>
+    <br>
+    <br>
+    <div class="dialog-visit-plan-button-row">
+      <button class="dialog-button" mat-button (click)="closeDialog()">Cancel</button>
+
+      <button class="dialog-button" mat-button mat-raised-button color="accent"
+              (click)="onSubmit()" [disabled]="!newArtistForm.valid">
+        Save
+      </button>
+  </div>
+  </div>
+</mat-card-content>

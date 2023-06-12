@@ -1,0 +1,19 @@
+<mat-card-content>
+  {{data.message}}
+  <p></p>
+  <p></p>
+  <mat-divider></mat-divider>
+  <p></p>
+  <p></p>
+  <div class="dialog-visit-cancel-button-row">
+    <button class="dialog-button" mat-button
+            (click)="cancel()">
+      Cancel
+    </button>
+
+    <button class="dialog-button" mat-button mat-raised-button color="accent"
+            (click)="approve()">
+      Approve
+    </button>
+  </div>
+</mat-card-content>
